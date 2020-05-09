@@ -9,9 +9,8 @@ const app = express();
 
 const port = 3000;
 // DATABASES
-const mongodbUrl = 'mongodb+srv://admin-edsnow:m@ss4617MA@cluster0-dhmls.mongodb.net/todolistDB'
-
-
+const mongodbUrl = 'mongodb://localhost:27017';
+const dbName = 'todolistDB';
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -19,7 +18,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(`${__dirname}/public`));
 
 
-mongoose.connect(mongodbUrl, {
+mongoose.connect(`${mongodbUrl}/${dbName}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
